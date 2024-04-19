@@ -1,0 +1,252 @@
+[
+  {
+    "id": 1,
+    "muscleGroup": "Chest",
+    "name": "Bench Press"
+  },
+  {
+    "id": 2,
+    "muscleGroup": "Chest",
+    "name": "Incline Bench Press"
+  },
+  {
+    "id": 3,
+    "muscleGroup": "Chest",
+    "name": "Decline Bench Press"
+  },
+  {
+    "id": 4,
+    "muscleGroup": "Chest",
+    "name": "Dumbbell Flyes"
+  },
+  {
+    "id": 5,
+    "muscleGroup": "Chest",
+    "name": "Push-ups"
+  },
+  {
+    "id": 6,
+    "muscleGroup": "Legs",
+    "name": "Squats"
+  },
+  {
+    "id": 7,
+    "muscleGroup": "Legs",
+    "name": "Lunges"
+  },
+  {
+    "id": 8,
+    "muscleGroup": "Legs",
+    "name": "Deadlifts"
+  },
+  {
+    "id": 9,
+    "muscleGroup": "Legs",
+    "name": "Leg Press"
+  },
+  {
+    "id": 10,
+    "muscleGroup": "Legs",
+    "name": "Calf Raises"
+  },
+  {
+    "id": 11,
+    "muscleGroup": "Back",
+    "name": "Pull-ups"
+  },
+  {
+    "id": 12,
+    "muscleGroup": "Back",
+    "name": "Lat Pulldown"
+  },
+  {
+    "id": 13,
+    "muscleGroup": "Back",
+    "name": "Barbell Rows"
+  },
+  {
+    "id": 14,
+    "muscleGroup": "Back",
+    "name": "T-Bar Rows"
+  },
+  {
+    "id": 15,
+    "muscleGroup": "Back",
+    "name": "Deadlifts"
+  },
+  {
+    "id": 16,
+    "muscleGroup": "Bicep",
+    "name": "Bicep Curls"
+  },
+  {
+    "id": 17,
+    "muscleGroup": "Bicep",
+    "name": "Hammer Curls"
+  },
+  {
+    "id": 18,
+    "muscleGroup": "Bicep",
+    "name": "Preacher Curls"
+  },
+  {
+    "id": 19,
+    "muscleGroup": "Bicep",
+    "name": "Concentration Curls"
+  },
+  {
+    "id": 20,
+    "muscleGroup": "Bicep",
+    "name": "Chin-ups"
+  },
+  {
+    "id": 21,
+    "muscleGroup": "Triceps",
+    "name": "Tricep Dips"
+  },
+  {
+    "id": 22,
+    "muscleGroup": "Triceps",
+    "name": "Tricep Pushdown"
+  },
+  {
+    "id": 23,
+    "muscleGroup": "Triceps",
+    "name": "Skull Crushers"
+  },
+  {
+    "id": 24,
+    "muscleGroup": "Triceps",
+    "name": "Overhead Tricep Extension"
+  },
+  {
+    "id": 25,
+    "muscleGroup": "Triceps",
+    "name": "Close-Grip Bench Press"
+  },
+  {
+    "id": 26,
+    "muscleGroup": "Abs",
+    "name": "Crunches"
+  },
+  {
+    "id": 27,
+    "muscleGroup": "Abs",
+    "name": "Leg Raises"
+  },
+  {
+    "id": 28,
+    "muscleGroup": "Abs",
+    "name": "Plank"
+  },
+  {
+    "id": 29,
+    "muscleGroup": "Abs",
+    "name": "Russian Twists"
+  },
+  {
+    "id": 30,
+    "muscleGroup": "Abs",
+    "name": "Mountain Climbers"
+  },
+  {
+    "id": 31,
+    "muscleGroup": "Chest",
+    "name": "Dumbbell Press"
+  },
+  {
+    "id": 32,
+    "muscleGroup": "Legs",
+    "name": "Step-ups"
+  },
+  {
+    "id": 33,
+    "muscleGroup": "Back",
+    "name": "Seated Row"
+  },
+  {
+    "id": 34,
+    "muscleGroup": "Bicep",
+    "name": "Incline Dumbbell Curl"
+  },
+  {
+    "id": 35,
+    "muscleGroup": "Triceps",
+    "name": "Diamond Push-ups"
+  },
+  {
+    "id": 36,
+    "muscleGroup": "Abs",
+    "name": "Hanging Leg Raises"
+  },
+  {
+    "id": 37,
+    "muscleGroup": "Chest",
+    "name": "Chest Dips"
+  },
+  {
+    "id": 38,
+    "muscleGroup": "Legs",
+    "name": "Romanian Deadlift"
+  },
+  {
+    "id": 39,
+    "muscleGroup": "Back",
+    "name": "Face Pulls"
+  },
+  {
+    "id": 40,
+    "muscleGroup": "Bicep",
+    "name": "Reverse Curls"
+  },
+  {
+    "id": 41,
+    "muscleGroup": "Triceps",
+    "name": "Tricep Kickbacks"
+  },
+  {
+    "id": 42,
+    "muscleGroup": "Abs",
+    "name": "Bicycle Crunches"
+  },
+  {
+    "id": 43,
+    "muscleGroup": "Chest",
+    "name": "Pec Deck Flyes"
+  },
+  {
+    "id": 44,
+    "muscleGroup": "Legs",
+    "name": "Goblet Squat"
+  },
+  {
+    "id": 45,
+    "muscleGroup": "Back",
+    "name": "Pendlay Row"
+  },
+  {
+    "id": 46,
+    "muscleGroup": "Bicep",
+    "name": "Zottman Curl"
+  },
+  {
+    "id": 47,
+    "muscleGroup": "Triceps",
+    "name": "Close-Grip Push-ups"
+  },
+  {
+    "id": 48,
+    "muscleGroup": "Abs",
+    "name": "V-ups"
+  },
+  {
+    "id": 49,
+    "muscleGroup": "Chest",
+    "name": "Incline Dumbbell Press"
+  },
+  {
+    "id": 50,
+    "muscleGroup": "Legs",
+    "name": "Bulgarian Split Squat"
+  }
+]

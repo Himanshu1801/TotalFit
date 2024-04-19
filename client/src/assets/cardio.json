@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Running"
+  },
+  {
+    "id": 2,
+    "name": "Cycling"
+  },
+  {
+    "id": 3,
+    "name": "Swimming"
+  },
+  {
+    "id": 4,
+    "name": "Rowing"
+  },
+  {
+    "id": 5,
+    "name": "Elliptical"
+  },
+  {
+    "id": 6,
+    "name": "Jump Rope"
+  },
+  {
+    "id": 7,
+    "name": "Walking"
+  },
+  {
+    "id": 8,
+    "name": "Stair Climbing"
+  },
+  {
+    "id": 9,
+    "name": "Hiking"
+  },
+  {
+    "id": 10,
+    "name": "Boxing"
+  },
+  {
+    "id": 11,
+    "name": "Treadmill"
+  },
+  {
+    "id": 12,
+    "name": "Kayaking"
+  },
+  {
+    "id": 13,
+    "name": "Skiing"
+  },
+  {
+    "id": 14,
+    "name": "Dancing"
+  },
+  {
+    "id": 15,
+    "name": "Aerobics"
+  },
+  {
+    "id": 16,
+    "name": "Skating"
+  },
+  {
+    "id": 17,
+    "name": "Pilates"
+  },
+  {
+    "id": 18,
+    "name": "Rock Climbing"
+  },
+  {
+    "id": 19,
+    "name": "Rollerblading"
+  },
+  {
+    "id": 20,
+    "name": "Martial Arts"
+  }
+]
