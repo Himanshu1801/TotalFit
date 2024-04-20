@@ -84,101 +84,109 @@ export default function Cutting() {
     <div className="cutting">
       <Header />
       <div className="d-flex flex-column align-items-center">
-        <h2 className="title text-center">Cutting</h2>
-        <form
-          className="cutting-form d-flex flex-column"
-          onSubmit={handleCuttingSubmit}
-        >
-          {errorMessage && <p className="error">{errorMessage}</p>}
+        <h2 className="title text-center" style={{ color: "white" }}>
+          Cutting
+        </h2>
+        <div className="d-flex flex-row justify-content-around">
+          <div className="m-5">
+            <form
+              className="cutting-form d-flex flex-column"
+              onSubmit={handleCuttingSubmit}
+            >
+              {errorMessage && <p className="error">{errorMessage}</p>}
 
-          <label>Weight (kg):</label>
-          <input
-            type="number"
-            name="weight"
-            id="weight"
-            placeholder="70"
-            value={weight}
-            onChange={handleWeightChange}
-          />
+              <label>Weight (kg):</label>
+              <input
+                type="number"
+                name="weight"
+                id="weight"
+                placeholder="70"
+                value={weight}
+                onChange={handleWeightChange}
+              />
 
-          <label>Height (cm):</label>
-          <input
-            type="number"
-            name="height"
-            id="height"
-            placeholder="170"
-            value={height}
-            onChange={handleHeightChange}
-          />
+              <label>Height (cm):</label>
+              <input
+                type="number"
+                name="height"
+                id="height"
+                placeholder="170"
+                value={height}
+                onChange={handleHeightChange}
+              />
 
-          <label>Age:</label>
-          <input
-            type="number"
-            name="age"
-            id="age"
-            placeholder="30"
-            value={age}
-            onChange={handleAgeChange}
-          />
+              <label>Age:</label>
+              <input
+                type="number"
+                name="age"
+                id="age"
+                placeholder="30"
+                value={age}
+                onChange={handleAgeChange}
+              />
 
-          <label>Gender:</label>
-          <select
-            name="gender"
-            id="gender"
-            value={gender}
-            onChange={handleGenderChange}
-          >
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
+              <label>Gender:</label>
+              <select
+                name="gender"
+                id="gender"
+                value={gender}
+                onChange={handleGenderChange}
+              >
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
 
-          <button
-            className="submit-btn cutting-submit-btn"
-            type="submit"
-            disabled={!weight || !height || !age}
-          >
-            Get Food Suggestions
-          </button>
-        </form>
-        <p className="message">{message}</p>
-        <div className="food-list">
-          <h3>Top Foods for Cutting:</h3>
-          <p>
-            <strong>Protein Goal:</strong> {proteinGoal} g
-          </p>
-          <p>
-            <strong>Calories:</strong> {kcal} kCal
-          </p>
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Protein (g)</th>
-                <th>Fat (g)</th>
-                <th>Carbs (g)</th>
-                <th>Calories (kCal)</th>
-              </tr>
-            </thead>
-            <tbody>
-              {foods.map((food, index) => (
-                <tr key={index}>
-                  <td>
-                    <Link
-                      to={food.recipe}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <b>{food.name}</b>
-                    </Link>
-                  </td>
-                  <td>{food.protein} g</td>
-                  <td>{food.fat} g</td>
-                  <td>{food.carbs} g</td>
-                  <td>{food.calories} kCal</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+              <button
+                className="submit-btn cutting-submit-btn"
+                type="submit"
+                disabled={!weight || !height || !age}
+              >
+                Get Food Suggestions
+              </button>
+            </form>
+          </div>
+          <div>
+            <p className="message">{message}</p>
+            <div className="food-list">
+              <p>
+                <strong>Protein Goal:</strong> {proteinGoal} g
+              </p>
+              <p>
+                <strong>Calories:</strong> {kcal} kCal
+              </p>
+              <h3>Top Foods for Cutting:</h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Protein (g)</th>
+                    <th>Fat (g)</th>
+                    <th>Carbs (g)</th>
+                    <th>Calories (kCal)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {foods.map((food, index) => (
+                    <tr key={index}>
+                      <td>
+                        <Link
+                          to={food.recipe}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <b>{food.name}</b>
+                        </Link>
+                      </td>
+                      <td>{food.protein} g</td>
+                      <td>{food.fat} g</td>
+                      <td>{food.carbs} g</td>
+                      <td>{food.calories} kCal</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>

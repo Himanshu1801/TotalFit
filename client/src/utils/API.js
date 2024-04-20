@@ -142,17 +142,25 @@ export const getCuttingFoods = (weight, height, age, gender, token) => {
 };
 
 export const createPhoto = (photoData, token) => {
-  const formData = new FormData();
-  formData.append("userId", photoData.userId);
-  formData.append("notes", photoData.notes);
-  formData.append("image", photoData.image);
+  // for (let [name, value] of photoData) {
+  //   console.log(`${name} = ${value}`); // key1 = value1, then key2 = value2
+  // }
 
   return fetch("/api/gallery/photo", {
     method: "POST",
     headers: {
       authorization: `Bearer ${token}`,
     },
-    body: formData,
+    body: photoData,
+  });
+};
+
+export const getPhotos = (token) => {
+  return fetch("/api/gallery/photo", {
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
   });
 };
 

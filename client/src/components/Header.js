@@ -31,7 +31,7 @@ export default function Header() {
               <Nav.Link as={Link} to="/history" eventKey="2">History</Nav.Link>
               <Nav.Link as={Link} to="/posture_checker" eventKey="3">Posture Checker</Nav.Link>
               <Nav.Link as={Link} to="/nutrition" eventKey="4">Nutrition</Nav.Link>
-              <Nav.Link as={Link} to="/photo" eventKey="5">Photos</Nav.Link>
+              <Nav.Link as={Link} to="/gallery" eventKey="5">Photos</Nav.Link>
               <Nav.Link onClick={Auth.logout} >Logout </Nav.Link>
             </Nav>
           </Navbar.Collapse>

@@ -44,7 +44,7 @@ function App() {
         <Route path="/nutrition" element={<Nutrition />} />
         <Route path="/nutrition/bulking" element={<Bulking />} />
         <Route path="/nutrition/cutting" element={<Cutting />} />
-        <Route path="/photo" element={<Photo />} />
+        <Route path="/gallery" element={<Photo />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </Router>

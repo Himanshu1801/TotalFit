@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import Auth from "../utils/auth";
-import { createPhoto, getPhotoById, deletePhoto } from "../utils/API";
+import {
+  createPhoto,
+  getPhotos,
+  getPhotoById,
+  deletePhoto,
+} from "../utils/API";
 import Header from "../components/Header";
 
 export default function Photo() {
@@ -17,11 +22,12 @@ export default function Photo() {
   useEffect(() => {
     // Fetch photos for the logged-in user
     const token = loggedIn ? Auth.getToken() : null;
-    const userId = Auth.getUserId();
+    // console.log(token);
+    // const userId = Auth.getUserId();
 
     const fetchPhotos = async () => {
       try {
-        const response = await getPhotoById(userId, token);
+        const response = await getPhotos(token);
         if (!response.ok) {
           throw new Error("Unable to fetch photos");
         }
@@ -36,7 +42,6 @@ export default function Photo() {
 
   const handlePhotoChange = (event) => {
     const { name, value, files } = event.target;
-
     if (name === "image" && files.length > 0) {
       setPhotoForm({ ...photoForm, [name]: files[0] });
     } else {
@@ -58,13 +63,16 @@ export default function Photo() {
 
     if (validateForm(photoForm)) {
       try {
+        console.log(photoForm);
         const formData = new FormData();
         formData.append("userId", userId);
         formData.append("notes", photoForm.notes);
         formData.append("image", photoForm.image);
-
+        for (let [name, value] of formData) {
+          console.log(`${name} = ${value}`); // key1 = value1, then key2 = value2
+        }
         const response = await createPhoto(formData, token);
-
+        console.log(response);
         if (!response.ok) {
           throw new Error("Something went wrong!");
         }
@@ -75,19 +83,19 @@ export default function Photo() {
         }, 3000);
 
         // Refresh photos
-        const fetchPhotos = async () => {
-          try {
-            const response = await getPhotoById(userId, token);
-            if (!response.ok) {
-              throw new Error("Unable to fetch photos");
-            }
-            setPhotos(response.data);
-          } catch (error) {
-            console.error(error);
-          }
-        };
+        // const fetchPhotos = async () => {
+        //   try {
+        //     const response = await getPhotoById(userId, token);
+        //     if (!response.ok) {
+        //       throw new Error("Unable to fetch photos");
+        //     }
+        //     setPhotos(response.data);
+        //   } catch (error) {
+        //     console.error(error);
+        //   }
+        // };
 
-        fetchPhotos();
+        // fetchPhotos();
 
         setPhotoForm({
           userId: "",
@@ -173,7 +181,7 @@ export default function Photo() {
         </form>
         <p className="message">{message}</p>
         <div className="photos-container">
-          {photos.map((photo) => (
+          {photos?.map((photo) => (
             <div key={photo._id} className="photo-item">
               <img
                 src={`data:${photo.contentType};base64,${Buffer.from(

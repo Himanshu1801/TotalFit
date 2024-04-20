@@ -3,8 +3,9 @@ const sharp = require("sharp");
 
 module.exports = {
   // create Photo
-  createPhoto({ body, file }, res) {
-    const { userId, notes } = body;
+  createPhoto(req, res) {
+    const { userId, notes } = req.body;
+    console.log(req.file);
     const imageBuffer = file.buffer;
     const contentType = file.mimetype;
 
@@ -39,6 +40,15 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 
+  getPhotos(req, res) {
+    Photo.find({})
+      .then((dbPhotoData) => res.json(dbPhotoData))
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
+  },
+  
   // get one Photo by id
   getPhotoById({ params }, res) {
     Photo.findOne({ _id: params.id })

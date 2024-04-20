@@ -1,11 +1,11 @@
 const router = require("express").Router();
 const {
   createPhoto,
+  getPhotos,
   getPhotoById,
   deletePhoto,
 } = require("../../controllers/photo-controller");
 
-// import middleware
 const { authMiddleware } = require("../../utils/auth");
 
 // on Insomnia:
@@ -14,10 +14,13 @@ const { authMiddleware } = require("../../utils/auth");
 // change filter to $. to find token
 router.use(authMiddleware);
 
-// /api/exercise/photo
+// /api/gallery/photo
 router.route("/photo").post(createPhoto);
 
-// /api/exercise/photo/:id
+// /api/gallery/photo
+router.route("/photo").get(getPhotos);
+
+// /api/gallery/photo/:id
 router.route("/photo/:id").get(getPhotoById).delete(deletePhoto);
 
 module.exports = router;
