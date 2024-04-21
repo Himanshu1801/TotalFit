@@ -607,3 +607,70 @@ canvas {
   height: 100%;
   border-radius: 8px;
 }
+/* ------------------------------------- Photos -------------------------------------------------- */
+.photos-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.photo-item {
+  position: relative;
+  margin: 10px;
+  overflow: hidden;
+}
+
+.photo-image {
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.photo-item:hover .photo-image {
+  filter: brightness(50%);
+}
+
+.photo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* semi-transparent black background */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0; /* hidden by default */
+  transition: opacity 0.3s ease;
+}
+
+.photo-item:hover .photo-overlay {
+  opacity: 1; /* visible on hover */
+}
+
+.photo-date,
+.photo-notes {
+  margin: 5px;
+}
+
+.delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}
+
+.photo-item:hover .delete-button {
+  opacity: 1;
+}

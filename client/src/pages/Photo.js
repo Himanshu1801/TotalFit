@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import Auth from "../utils/auth";
-import {
-  createPhoto,
-  getPhotos,
-  getPhotoById,
-  deletePhoto,
-} from "../utils/API";
+import { createPhoto, getPhotos, deletePhoto } from "../utils/API";
 import Header from "../components/Header";
 
 export default function Photo() {
@@ -19,24 +14,36 @@ export default function Photo() {
   const [message, setMessage] = useState("");
   const loggedIn = Auth.loggedIn();
 
-  useEffect(() => {
-    // Fetch photos for the logged-in user
-    const token = loggedIn ? Auth.getToken() : null;
-    // console.log(token);
-    // const userId = Auth.getUserId();
+  const fetchPhotos = async () => {
+    try {
+      const token = loggedIn ? Auth.getToken() : null;
+      const response = await getPhotos(token);
 
+      if (response && response.length > 0) {
+        setPhotos(response);
+      } else {
+        console.log("No photos found");
+      }
+    } catch (error) {
+      console.error("Error fetching photos:", error);
+    }
+  };
+
+  useEffect(() => {
     const fetchPhotos = async () => {
       try {
+        const token = loggedIn ? Auth.getToken() : null;
         const response = await getPhotos(token);
-        if (!response.ok) {
-          throw new Error("Unable to fetch photos");
+
+        if (response && response.length > 0) {
+          setPhotos(response);
+        } else {
+          console.log("No photos found");
         }
-        setPhotos(response.data);
       } catch (error) {
-        console.error(error);
+        console.error("Error fetching photos:", error);
       }
     };
-
     fetchPhotos();
   }, [loggedIn]);
 
@@ -63,16 +70,12 @@ export default function Photo() {
 
     if (validateForm(photoForm)) {
       try {
-        console.log(photoForm);
         const formData = new FormData();
         formData.append("userId", userId);
         formData.append("notes", photoForm.notes);
         formData.append("image", photoForm.image);
-        for (let [name, value] of formData) {
-          console.log(`${name} = ${value}`); // key1 = value1, then key2 = value2
-        }
+
         const response = await createPhoto(formData, token);
-        console.log(response);
         if (!response.ok) {
           throw new Error("Something went wrong!");
         }
@@ -82,20 +85,7 @@ export default function Photo() {
           setMessage("");
         }, 3000);
 
-        // Refresh photos
-        // const fetchPhotos = async () => {
-        //   try {
-        //     const response = await getPhotoById(userId, token);
-        //     if (!response.ok) {
-        //       throw new Error("Unable to fetch photos");
-        //     }
-        //     setPhotos(response.data);
-        //   } catch (error) {
-        //     console.error(error);
-        //   }
-        // };
-
-        // fetchPhotos();
+        await fetchPhotos();
 
         setPhotoForm({
           userId: "",
@@ -121,22 +111,8 @@ export default function Photo() {
       setTimeout(() => {
         setMessage("");
       }, 3000);
-
-      // Refresh photos
-      const userId = Auth.getUserId();
-      const fetchPhotos = async () => {
-        try {
-          const response = await getPhotoById(userId, token);
-          if (!response.ok) {
-            throw new Error("Unable to fetch photos");
-          }
-          setPhotos(response.data);
-        } catch (error) {
-          console.error(error);
-        }
-      };
-
-      fetchPhotos();
+      setPhotos([]);
+      await fetchPhotos();
     } catch (error) {
       console.error(error);
     }
@@ -184,12 +160,20 @@ export default function Photo() {
           {photos?.map((photo) => (
             <div key={photo._id} className="photo-item">
               <img
-                src={`data:${photo.contentType};base64,${Buffer.from(
-                  photo.image.data
-                ).toString("base64")}`}
+                src={`data:${photo.contentType};base64,${photo.image}`}
                 alt={photo.notes}
+                className="photo-image"
               />
-              <button onClick={() => handleDeletePhoto(photo._id)}>
+              <div className="photo-overlay">
+                <p className="photo-date">
+                  {new Date(photo.date).toLocaleDateString()}
+                </p>
+                <p className="photo-notes">{photo.notes}</p>
+              </div>
+              <button
+                className="delete-button"
+                onClick={() => handleDeletePhoto(photo._id)}
+              >
                 Delete
               </button>
             </div>

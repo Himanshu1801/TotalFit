@@ -161,6 +161,11 @@ export const getPhotos = (token) => {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
+  }).then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json(); // Parse response body as JSON
   });
 };
 
