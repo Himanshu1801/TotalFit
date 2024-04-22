@@ -1,5 +1,3 @@
-// get logged in user's info
-
 export const getMe = (token) => {
   return fetch("/api/user/me", {
     headers: {
@@ -142,10 +140,6 @@ export const getCuttingFoods = (weight, height, age, gender, token) => {
 };
 
 export const createPhoto = (photoData, token) => {
-  // for (let [name, value] of photoData) {
-  //   console.log(`${name} = ${value}`); // key1 = value1, then key2 = value2
-  // }
-
   return fetch("/api/gallery/photo", {
     method: "POST",
     headers: {
@@ -165,7 +159,7 @@ export const getPhotos = (token) => {
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
-    return response.json(); // Parse response body as JSON
+    return response.json();
   });
 };
 

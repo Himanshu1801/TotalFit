@@ -50,9 +50,9 @@ export default function Cutting() {
     if (!token) return false;
 
     try {
-      const weightInKg = weight; // The weight entered by the user
-      const heightInCm = height; // The height entered by the user
-      const ageInYears = age; // The age entered by the user
+      const weightInKg = weight;
+      const heightInCm = height;
+      const ageInYears = age;
 
       const response = await getCuttingFoods(
         weightInKg,

@@ -102,7 +102,7 @@ export default function Cardio() {
                             <option key={exercise.id} value={exercise.name} />
                         ))}
                     </datalist>
-                    <label >Distance (miles):</label>
+                    <label >Distance (kms):</label>
                     <input type="number" name="distance" id="distance" placeholder="0"
                         value={cardioForm.distance} onChange={handleCardioChange} />
                     <label >Duration (minutes):</label>

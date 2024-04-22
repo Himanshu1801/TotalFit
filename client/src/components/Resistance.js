@@ -105,7 +105,7 @@ export default function Resistance() {
                             <option key={exercise.id} value={exercise.name} />
                         ))}
                     </datalist>
-                    <label>Weight (lbs):</label>
+                    <label>Weight (kgs):</label>
                     <input type="number" name="weight" id="weight" placeholder="0"
                         value={resistanceForm.weight} onChange={handleResistanceChange} />
                     <label>Sets:</label>

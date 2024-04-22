@@ -11,7 +11,7 @@ module.exports = {
       const filePath = req.file.path;
 
       sharp(filePath)
-        .resize({ width: 300, height: 300, fit: "contain" })
+        .resize({ width: 400, height: 400, fit: "contain" })
         .toBuffer(function (err, buffer, info) {
           if (err) {
             console.error("Error processing image:", err);

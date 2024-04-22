@@ -12,6 +12,7 @@ export default function Photo() {
   });
   const [photos, setPhotos] = useState([]);
   const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const loggedIn = Auth.loggedIn();
 
   const fetchPhotos = async () => {
@@ -57,7 +58,7 @@ export default function Photo() {
   };
 
   const validateForm = (form) => {
-    return form.image !== null;
+    return form.image !== null && form.image !== undefined && form.image !== "";
   };
 
   const handlePhotoSubmit = async (event) => {
@@ -69,6 +70,7 @@ export default function Photo() {
     const userId = Auth.getUserId();
 
     if (validateForm(photoForm)) {
+      setIsSubmitting(true);
       try {
         const formData = new FormData();
         formData.append("userId", userId);
@@ -94,6 +96,8 @@ export default function Photo() {
         });
       } catch (err) {
         console.error(err);
+      } finally {
+        setIsSubmitting(false);
       }
     }
   };
@@ -125,59 +129,65 @@ export default function Photo() {
   return (
     <div className="progress-photos">
       <Header />
-      <div className="d-flex flex-column align-items-center">
-        <h2 className="title text-center">Add Progress Photo</h2>
-        <form
-          className="photo-form d-flex flex-column"
-          onSubmit={handlePhotoSubmit}
-        >
-          <label>Notes:</label>
-          <input
-            type="text"
-            name="notes"
-            id="notes"
-            placeholder="Enter notes"
-            value={photoForm.notes}
-            onChange={handlePhotoChange}
-          />
-          <label>Upload Photo:</label>
-          <input
-            type="file"
-            name="image"
-            id="image"
-            onChange={handlePhotoChange}
-          />
-          <button
-            className="submit-btn photo-submit-btn"
-            type="submit"
-            disabled={!validateForm(photoForm)}
+      <div className="content-container">
+        <div className="d-flex flex-column align-items-center">
+          <h2 className="title text-center">Add Progress Photo</h2>
+          <form
+            className="photo-form d-flex flex-column"
+            onSubmit={handlePhotoSubmit}
           >
-            Add
-          </button>
-        </form>
-        <p className="message">{message}</p>
-        <div className="photos-container">
-          {photos?.map((photo) => (
-            <div key={photo._id} className="photo-item">
-              <img
-                src={`data:${photo.contentType};base64,${photo.image}`}
-                alt={photo.notes}
-                className="photo-image"
-              />
-              <div className="photo-overlay">
-                <p className="photo-date">
-                  {new Date(photo.date).toLocaleDateString()}
-                </p>
-                <p className="photo-notes">{photo.notes}</p>
-              </div>
-              <button
-                className="delete-button"
-                onClick={() => handleDeletePhoto(photo._id)}
-              >
-                Delete
-              </button>
+            <label>Notes:</label>
+            <input
+              type="text"
+              name="notes"
+              id="notes"
+              placeholder="Enter notes"
+              value={photoForm.notes}
+              onChange={handlePhotoChange}
+            />
+            <label>Upload Photo:</label>
+            <input
+              type="file"
+              name="image"
+              id="image"
+              onChange={handlePhotoChange}
+            />
+            <button
+              className="submit-btn photo-submit-btn"
+              type="submit"
+              disabled={!validateForm(photoForm) || isSubmitting}
+            >
+              Add
+            </button>
+          </form>
+          {message && <p className="success-message">{message}</p>}
+          {photos?.length === 0 ? (
+            <p className="no-photos-message">No photos available.</p>
+          ) : (
+            <div className="photos-container">
+              {photos?.map((photo) => (
+                <div key={photo._id} className="photo-item">
+                  <img
+                    src={`data:${photo.contentType};base64,${photo.image}`}
+                    alt={photo.notes}
+                    className="photo-image"
+                  />
+                  <div className="photo-overlay">
+                    <p className="photo-date">
+                      {new Date(photo.date).toLocaleDateString()}
+                    </p>
+                    <p className="photo-notes">{photo.notes}</p>
+                  </div>
+                  <button
+                    className="delete-button"
+                    onClick={() => handleDeletePhoto(photo._id)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              ))}
             </div>
-          ))}
+          )}
         </div>
       </div>
     </div>
