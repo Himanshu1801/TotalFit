@@ -25,8 +25,6 @@ const SquatPosture = () => {
     // webcam = new tmPose.Webcam(size, size, flip);
     await webcam.setup();
     await webcam.play();
-    // console.log(webcam);
-    // await webcam.stop();
     window.requestAnimationFrame(loop);
 
     const canvas = document.getElementById("canvas");
@@ -40,13 +38,6 @@ const SquatPosture = () => {
 
     setIsLoading(false);
   };
-
-  // const stopWebcam = async () => {
-  //     console.log(webcam);
-  //     console.log("clicked");
-  //     // await webcam.update()
-  //     await webcam.stopStreamedVideo();
-  // };
 
   const loop = async () => {
     webcam.update();

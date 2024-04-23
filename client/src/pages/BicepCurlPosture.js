@@ -7,6 +7,7 @@ const BicepCurlPosture = () => {
   const URL = "https://teachablemachine.withgoogle.com/models/DmvXmLVcg/";
   let model, webcam, ctx, labelContainer, maxPredictions;
 
+  webcam = new tmPose.Webcam(500, 500, true);
   const [predictions, setPredictions] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -20,8 +21,8 @@ const BicepCurlPosture = () => {
     maxPredictions = model.getTotalClasses();
 
     const size = 500;
-    const flip = true;
-    webcam = new tmPose.Webcam(size, size, flip);
+    // const flip = true;
+    // webcam = new tmPose.Webcam(size, size, flip);
     await webcam.setup();
     await webcam.play();
     window.requestAnimationFrame(loop);
@@ -37,10 +38,6 @@ const BicepCurlPosture = () => {
 
     setIsLoading(false);
   };
-
-  // const stopWebcam = () => {
-  //   webcam.stop();
-  // };
 
   const loop = async () => {
     webcam.update();
@@ -122,12 +119,18 @@ const BicepCurlPosture = () => {
           ))}
         </div>
       </div>
-      <button type="button" onClick={init} className="start-button">
-        Start
-      </button>
-      {/* <button type="button" onClick={stopWebcam} className="stop-button">
-        Stop
-      </button> */}
+      <div className="start-stop-button-container">
+        <button type="button" onClick={init} className="start-button">
+          Start
+        </button>
+        <button
+          type="button"
+          onClick={() => window.location.reload()}
+          className="stop-button"
+        >
+          Stop
+        </button>
+      </div>
     </div>
   );
 };
