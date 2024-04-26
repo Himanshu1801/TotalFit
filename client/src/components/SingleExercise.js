@@ -106,7 +106,7 @@ export default function SingleExercise() {
                     <div className='d-flex justify-content-center'><img alt="cardio" src={cardioIcon} className="exercise-form-icon" /></div>
                     <p style={{color:'black'}}><span>Date: </span> {cardioData.date}</p>
                     <p style={{color:'black'}}><span>Name: </span> {cardioData.name}</p>
-                    <p style={{color:'black'}}><span>Distance: </span> {cardioData.distance} miles</p>
+                    <p style={{color:'black'}}><span>Distance: </span> {cardioData.distance} kms</p>
                     <p style={{color:'black'}}><span>Duration: </span> {cardioData.duration} minutes</p>
                     <button className='delete-btn' onClick={() => handleDeleteExercise(id)}>Delete Exercise</button>
                 </div>)}
@@ -114,7 +114,7 @@ export default function SingleExercise() {
                     <div className='d-flex justify-content-center'><img alt="resistance" src={resistanceIcon} className="exercise-form-icon" /></div>
                     <p style={{color:'black'}}><span>Date: </span> {resistanceData.date}</p>
                     <p style={{color:'black'}}><span>Name: </span> {resistanceData.name}</p>
-                    <p style={{color:'black'}}><span>Weight: </span> {resistanceData.weight} lbs</p>
+                    <p style={{color:'black'}}><span>Weight: </span> {resistanceData.weight} kgs</p>
                     <p style={{color:'black'}}><span>Sets: </span> {resistanceData.sets}</p>
                     <p style={{color:'black'}}><span>Reps: </span> {resistanceData.reps}</p>
                     <button className='delete-btn' onClick={() => handleDeleteExercise(id)}>Delete Exercise</button>
