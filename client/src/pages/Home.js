@@ -14,7 +14,7 @@ export default function Home() {
       <Container className="home d-flex flex-column align-items-center justify-content-center flex-wrap text-center">
         <h1 className="home-title">Your Complete Fitness and Nutrition Dashboard</h1>
         <p className="home-text">
-          Track your daily exercises, check your posture, get food suggestions and stay fit with us.
+          Track your daily exercises and progress, check your posture, get food suggestions and stay fit with us.
         </p>
         {loggedIn ? (
           <button className="home-btn" onClick={() => navigate("/exercise")}>
