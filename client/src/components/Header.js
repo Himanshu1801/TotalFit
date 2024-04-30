@@ -39,7 +39,7 @@ export default function Header() {
         (<Navbar.Brand as={Link} to="/" className={`brand brand-new mx-auto d-flex align-items-center
           ${isLoginPage || isSignupPage ? "brand-text" : null}`}>
           <img alt="logo" style={{ display: "inline" }} src={logo} className="logo" />
-          FitTrack
+          TotalFit
         </Navbar.Brand>)}
     </Navbar >
   );
