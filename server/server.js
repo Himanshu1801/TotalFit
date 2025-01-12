@@ -1,8 +1,9 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const routes = require("./routes");
+// console.log("hello", process.env);
 const db = require("./config/connection");
-
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -20,8 +21,6 @@ if (process.env.NODE_ENV === "production") {
 // });
 
 app.use(routes);
-
-
 
 db.once("open", () => {
   app.listen(PORT, () => {
